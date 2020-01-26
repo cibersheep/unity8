@@ -19,8 +19,6 @@ import Ubuntu.Components 1.3
 import Ubuntu.Components.Themes 1.3
 import "../Components"
 
-import Ubuntu.Components.Themes.Ambiance 1.3 as Ambiance
-
 Item {
     id: root
 
@@ -32,10 +30,6 @@ Item {
     property alias title: header.title
     property alias showHeader: header.visible
 
-    Ambiance.Palette {
-        id: ambiancePalette
-    }
-
     QtObject {
         id: d
 
@@ -43,7 +37,7 @@ Item {
         // This is also the default value of a color property in QML.
         readonly property color undefinedColor: "#00000000"
 
-        readonly property color defaultBackgroundColor: header.visible ? ambiancePalette.normal.background : "black"
+        readonly property color defaultBackgroundColor: header.visible ? styledItem.fakeTheme.palette.normal.background : "black"
 
         // Splash screen that shows the application icon and splashTitle
         readonly property bool showIcon: overlaidImage.status == Image.Null && !root.showHeader
